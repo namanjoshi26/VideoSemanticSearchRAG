@@ -66,7 +66,6 @@ Cython==3.0.8
 dask==2023.8.1
 datascience==0.17.6
 db-dtypes==1.2.0
-dbus-python==1.2.18
 debugpy==1.6.6
 decorator==4.4.2
 defusedxml==0.7.1
