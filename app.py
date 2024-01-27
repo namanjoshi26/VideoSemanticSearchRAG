@@ -12,8 +12,9 @@ def init_retriever():
     return SentenceTransformer('flax-sentence-embeddings/all_datasets_v3_mpnet-base')
 
 with st.sidebar:    
-    open_ai_key = st.text_input("Enter OpenAI API key", type="password")
-    "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+    cohere_key = st.text_input("Enter Cohere API key", type="password")
+    gemini_key = st.text_input("Enter Google Gemini API key", type="password")
+    
 
 index = init_pinecone()
 retriever = init_retriever()
@@ -51,6 +52,13 @@ st.markdown("""
 query = st.text_input("Search!", "")
 
 if query != "":
+    if not cohere_key:
+        st.info("Please enter your OpenAI API key")
+        st.stop()
+    if not gemini_key:
+        st.info("Please enter your Googel Gemini API key")
+        st.stop()
+    
     xq = retriever.encode([query]).tolist()
     xc = index.query(vector=xq, top_k=5, include_metadata=True)
     
