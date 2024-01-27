@@ -423,6 +423,14 @@ tabulate==0.9.0
 tbb==2021.11.0
 tblib==3.0.0
 tenacity==8.2.3
+tensorflow
+tensorflow-datasets
+tensorflow-estimator
+tensorflow-gcs-config
+tensorflow-hub
+tensorflow-io-gcs-filesystem
+tensorflow-metadata
+tensorflow-probability
 tensorstore==0.1.45
 termcolor==2.4.0
 terminado==0.18.0
@@ -437,8 +445,8 @@ tokenizers==0.15.1
 toml==0.10.2
 tomli==2.0.1
 toolz==0.12.0
-torch==2.1.2
-torchvision==0.16.2
+torch
+torchvision
 torchdata==0.7.0
 torchsummary==1.5.1
 torchtext==0.16.0
