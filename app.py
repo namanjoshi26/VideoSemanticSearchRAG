@@ -1,6 +1,8 @@
 import streamlit as st
 from pinecone import Pinecone
 from sentence_transformers import SentenceTransformer
+from semantic_router import Route
+from semantic_router.layer import RouteLayer
 
 @st.experimental_singleton
 def init_pinecone():
@@ -14,6 +16,31 @@ def init_retriever():
 with st.sidebar:    
     cohere_key = st.text_input("Enter Cohere API key", type="password")
     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
+
+politics = Route(
+    name="politics",
+    utterances=[
+        "isn't politics the best thing ever",
+        "why don't you tell me about your political opinions",
+        "don't you just love the president" "don't you just hate the president",
+        "they're going to destroy this country!",
+        "they will save the country!",
+    ],
+)
+chitchat = Route(
+    name="chitchat",
+    utterances=[
+        "how's the weather today?",
+        "how are things going?",
+        "lovely weather today",
+        "the weather is horrendous",
+        "let's go to the chippy",
+    ],
+)
+
+routes = [politics,chitchat]
+
+
     
 
 index = init_pinecone()
@@ -58,7 +85,13 @@ if query != "":
     if not gemini_key:
         st.info("Please enter your Googel Gemini API key")
         st.stop()
-    
+    encoder = CohereEncoder()
+    rl = RouteLayer(encoder=encoder, routes=routes)
+    RouteLayer = rl(query)
+    if RouteLayer == "politics":
+        print("I don't have knowledge about this topic")
+        break
+        
     xq = retriever.encode([query]).tolist()
     xc = index.query(vector=xq, top_k=5, include_metadata=True)
     
