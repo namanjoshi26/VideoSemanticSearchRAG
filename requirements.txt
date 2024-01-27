@@ -385,7 +385,7 @@ scipy==1.11.4
 scooby==0.9.2
 scs==3.2.4.post1
 seaborn==0.13.1
-semantic-router==0.0.15
+semantic-router==0.0.16
 Send2Trash==1.8.2
 sentence-transformers==2.2.2
 sentencepiece==0.1.99
