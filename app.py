@@ -87,18 +87,18 @@ if query != "":
         st.stop()
     encoder = CohereEncoder()
     rl = RouteLayer(encoder=encoder, routes=routes)
-    Routelayer = rl(query)
-    if Routelayer == "politics":
+    Routelay = rl(query)
+    if Routelay == "politics":
         print("I don't have knowledge about this topic")
-        break
+    else:
         
-    xq = retriever.encode([query]).tolist()
-    xc = index.query(vector=xq, top_k=5, include_metadata=True)
-    
-    for context in xc['matches']:
-        card(
-            context['metadata']['thumbnail'],
-            context['metadata']['title'],
-            context['metadata']['url'],
-            context['metadata']['text']
-        )
+        xq = retriever.encode([query]).tolist()
+        xc = index.query(vector=xq, top_k=5, include_metadata=True)
+        
+        for context in xc['matches']:
+            card(
+                context['metadata']['thumbnail'],
+                context['metadata']['title'],
+                context['metadata']['url'],
+                context['metadata']['text']
+            )
