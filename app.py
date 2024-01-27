@@ -11,6 +11,10 @@ def init_pinecone():
 def init_retriever():
     return SentenceTransformer('flax-sentence-embeddings/all_datasets_v3_mpnet-base')
 
+with st.sidebar:    
+    open_ai_key = st.text_input("Enter OpenAI API key", type="password")
+    "[Get an OpenAI API key](https://platform.openai.com/account/api-keys)"
+
 index = init_pinecone()
 retriever = init_retriever()
 
