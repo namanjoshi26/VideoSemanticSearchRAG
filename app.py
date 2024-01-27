@@ -87,8 +87,8 @@ if query != "":
         st.stop()
     encoder = CohereEncoder()
     rl = RouteLayer(encoder=encoder, routes=routes)
-    RouteLayer = rl(query)
-    if RouteLayer == "politics":
+    Routelayer = rl(query)
+    if Routelayer == "politics":
         print("I don't have knowledge about this topic")
         break
         
