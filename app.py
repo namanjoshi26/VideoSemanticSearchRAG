@@ -16,7 +16,9 @@ def init_retriever():
 
 with st.sidebar:    
     cohere_key = st.text_input("Enter Cohere API key", type="password")
+    os.environ["COHERE_API_KEY"] = cohere_key
     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
+    
     pinecone_key = st.text_input("Enter Pinecone API key", type="password")
 
 politics = Route(
