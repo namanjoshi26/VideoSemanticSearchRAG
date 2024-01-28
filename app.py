@@ -9,7 +9,6 @@ from dotenv import load_dotenv
 from getpass import getpass
 
 load_dotenv()
-os.getenv("COHERE_API_KEY")
 os.environ["COHERE_API_KEY"] = os.getenv("COHERE_API_KEY") or getpass(
     "Enter Cohere API Key: "
 )
