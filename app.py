@@ -87,6 +87,9 @@ if query != "":
     if not gemini_key:
         st.info("Please enter your Google Gemini API key")
         st.stop()
+    if not pinecone_key:
+        st.info("Please enter your Pinecone API key")
+        st.stop()
     encoder = CohereEncoder()
     rl = RouteLayer(encoder=encoder, routes=routes)
     Routelay = rl(query)
