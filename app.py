@@ -30,12 +30,18 @@ def init_pinecone(api):
 def init_retriever():
     return SentenceTransformer('flax-sentence-embeddings/all_datasets_v3_mpnet-base')
 
-with st.sidebar:    
-    #cohere_key = st.text_input("Enter Cohere API key", type="password")
+with st.sidebar:   
+    
+    cohere_key = st.text_input("Enter Cohere API key", type="password")
     #os.environ["COHERE_API_KEY"] = cohere_key
     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
     
     pinecone_key = st.text_input("Enter Pinecone API key", type="password")
+
+# Check if API key is provided
+if cohere_key:
+    # Assign credentials from the provided API key
+    co = cohere.Client(cohere_key)
 
 politics = Route(
     name="politics",
