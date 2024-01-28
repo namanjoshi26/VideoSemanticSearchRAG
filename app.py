@@ -127,33 +127,34 @@ prompt=[
 ]
 
 if query != "":
-    st.info("Processing...")
-    # if not cohere_key:
-    #     st.info("Please enter your Cohere API key")
-    #     st.stop()
-    if not gemini_key:
-        st.info("Please enter your Google Gemini API key")
-        st.stop()
-    # if not pinecone_key:
-    #     st.info("Please enter your Pinecone API key")
-    #     st.stop()
-    encoder = CohereEncoder()
-    rl = RouteLayer(encoder=encoder, routes=routes)
-    Routelay = rl(query)
-    if Routelay.name == "politics":
-        st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
-    else:
-        xq = retriever.encode([query]).tolist()
-        xc = index.query(vector=xq, top_k=5, include_metadata=True)
-        if xc['matches'][0]['score'] < 0.5:
-            st.write("I do not have knowledge about this topic")
+    with st.spinner("Processing..."):
+        st.info("Processing...")
+        # if not cohere_key:
+        #     st.info("Please enter your Cohere API key")
+        #     st.stop()
+        if not gemini_key:
+            st.info("Please enter your Google Gemini API key")
+            st.stop()
+        # if not pinecone_key:
+        #     st.info("Please enter your Pinecone API key")
+        #     st.stop()
+        encoder = CohereEncoder()
+        rl = RouteLayer(encoder=encoder, routes=routes)
+        Routelay = rl(query)
+        if Routelay.name == "politics":
+            st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
         else:
-            response=get_gemini_response(query,prompt)
-            st.write(response)
-            for context in xc['matches']:
-                card(
-                    context['metadata']['thumbnail'],
-                    context['metadata']['title'],
-                    context['metadata']['url']
-            )
+            xq = retriever.encode([query]).tolist()
+            xc = index.query(vector=xq, top_k=5, include_metadata=True)
+            if xc['matches'][0]['score'] < 0.5:
+                st.write("I do not have knowledge about this topic")
+            else:
+                response=get_gemini_response(query,prompt)
+                st.write(response)
+                for context in xc['matches']:
+                    card(
+                        context['metadata']['thumbnail'],
+                        context['metadata']['title'],
+                        context['metadata']['url']
+                )
     st.success("Done")
