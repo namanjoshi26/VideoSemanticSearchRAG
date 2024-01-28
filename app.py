@@ -157,4 +157,3 @@ if query != "":
                         context['metadata']['title'],
                         context['metadata']['url']
                 )
-    st.success("Done")
