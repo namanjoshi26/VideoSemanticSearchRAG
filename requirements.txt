@@ -210,6 +210,7 @@ kagglehub==0.1.6
 keras==2.15.0
 keyring==23.5.0
 kiwisolver==1.4.5
+llama_cpp_python==0.2.34
 langcodes==3.3.0
 launchpadlib==1.10.16
 lazr.restfulclient==0.14.4
