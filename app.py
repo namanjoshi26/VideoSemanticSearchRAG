@@ -4,6 +4,7 @@ from sentence_transformers import SentenceTransformer
 from semantic_router import Route
 from semantic_router.layer import RouteLayer
 from semantic_router.encoders import CohereEncoder
+import os
 
 @st.experimental_singleton
 def init_pinecone(api):
