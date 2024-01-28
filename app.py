@@ -7,11 +7,20 @@ from semantic_router.encoders import CohereEncoder
 import os
 from dotenv import load_dotenv
 from getpass import getpass
+import logging
+import cohere
 
+# Configure logger
+logging.getLogger("complete").setLevel(logging.WARNING)
+
+
+# Load environment variables
 load_dotenv()
-os.environ["COHERE_API_KEY"] = os.getenv("COHERE_API_KEY") or getpass(
-    "Enter Cohere API Key: "
-)
+
+
+# Assign credentials from environment variable or streamlit secrets dict
+co = cohere.Client(os.getenv("COHERE_API_KEY")) or st.secrets["COHERE_API_KEY"]
+
 @st.experimental_singleton
 def init_pinecone(api):
     pc = Pinecone(api_key="b548349d-858c-44cd-8e13-b56ad80eab3e")
