@@ -10,6 +10,7 @@ from getpass import getpass
 import logging
 import cohere
 import google.generativeai as genai
+import time
 
 # Configure logger
 logging.getLogger("complete").setLevel(logging.WARNING)
@@ -126,6 +127,7 @@ prompt=[
 ]
 
 if query != "":
+    st.info("Processing...")
     # if not cohere_key:
     #     st.info("Please enter your Cohere API key")
     #     st.stop()
@@ -154,3 +156,4 @@ if query != "":
                     context['metadata']['title'],
                     context['metadata']['url']
             )
+    st.success("Done")
