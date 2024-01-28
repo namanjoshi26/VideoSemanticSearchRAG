@@ -96,7 +96,7 @@ if query != "":
     encoder = CohereEncoder()
     rl = RouteLayer(encoder=encoder, routes=routes)
     Routelay = rl(query)
-    if Routelay == "politics":
+    if Routelay.name == "politics":
         st.write("I don't have knowledge about this topic")
     else:
         
