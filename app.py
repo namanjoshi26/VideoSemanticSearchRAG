@@ -107,7 +107,7 @@ def card(thubmnail, title, url):
     
 st.write("""
 # RAG based Chatbot and Semantic Video Search without any Hallucinations
-### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications
+##### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications
 Ask me a question!
 """)
 
