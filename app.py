@@ -125,16 +125,17 @@ if query != "":
     rl = RouteLayer(encoder=encoder, routes=routes)
     Routelay = rl(query)
     if Routelay.name == "politics":
-        st.write("I don't have knowledge about this topic")
+        st.write("I cannot talk about politics/chitchat")
     else:
-        
         xq = retriever.encode([query]).tolist()
         xc = index.query(vector=xq, top_k=5, include_metadata=True)
-        
-        for context in xc['matches']:
-            card(
-                context['metadata']['thumbnail'],
-                context['metadata']['title'],
-                context['metadata']['url'],
-                context['metadata']['text']
+        if xc['matches'][0]['score'] < 0.5:
+            st.write("I do not have knowledge about this topic")
+        else:
+            for context in xc['matches']:
+                card(
+                    context['metadata']['thumbnail'],
+                    context['metadata']['title'],
+                    context['metadata']['url'],
+                    context['metadata']['text']
             )
