@@ -72,7 +72,7 @@ routes = [politics,chitchat]
 try:
     index = init_pinecone(pinecone_key)
     
-except pinecone.exceptions.PineconeConfigurationError as e:
+except:
     # Handle the configuration error, e.g., print a user-friendly message
     st.write("Enter PineCone API Key")
     
