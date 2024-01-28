@@ -87,7 +87,7 @@ except:
 #index = init_pinecone(pinecone_key)
 retriever = init_retriever()
 
-def card(thubmnail, title, url, context):
+def card(thubmnail, title, url):
     return st.markdown(f"""
     <div class="container-fluid">
         <div class="row align-items-start">
@@ -99,9 +99,7 @@ def card(thubmnail, title, url, context):
              <div  class="col-md-8 col-sm-8">
                  <a href={url}>{title}</a>
                  <br>
-                 <span style="color: #808080;">
-                     <small>{context[:200].capitalize()+"...."}</small>
-                 </span>
+                 
              </div>
         </div>
      </div>
@@ -122,7 +120,7 @@ query = st.text_input("Search!", "")
 ## Define Your Prompt
 prompt=[
     """
-    You are an expert in the knowledge of Artificial Intelligence, Machine Learning and Communications. Summarize your answer in no more than 200 characters.
+    You are an expert in the knowledge of Artificial Intelligence, Machine Learning and Communications. Summarize your answer in no more than 250 characters.
 
     """
 
@@ -150,12 +148,11 @@ if query != "":
         if xc['matches'][0]['score'] < 0.5:
             st.write("I do not have knowledge about this topic")
         else:
+            response=get_gemini_response(query,prompt)
+            st.write(response)
             for context in xc['matches']:
-                response=get_gemini_response(query,prompt)
-                st.write(response)
                 card(
                     context['metadata']['thumbnail'],
                     context['metadata']['title'],
-                    context['metadata']['url'],
-                    context['metadata']['text']
+                    context['metadata']['url']
             )
