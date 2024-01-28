@@ -69,8 +69,14 @@ routes = [politics,chitchat]
 
 
     
-
-index = init_pinecone(pinecone_key)
+try:
+    index = init_pinecone(pinecone_key)
+    
+except pinecone.exceptions.PineconeConfigurationError as e:
+    # Handle the configuration error, e.g., print a user-friendly message
+    st.write("Enter PineCone API Key")
+    
+#index = init_pinecone(pinecone_key)
 retriever = init_retriever()
 
 def card(thubmnail, title, url, context):
