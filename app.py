@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from getpass import getpass
 import logging
 import cohere
+import google.generativeai as genai
 
 # Configure logger
 logging.getLogger("complete").setLevel(logging.WARNING)
@@ -29,12 +30,19 @@ def init_pinecone(api):
 @st.experimental_singleton
 def init_retriever():
     return SentenceTransformer('flax-sentence-embeddings/all_datasets_v3_mpnet-base')
+    
+def get_gemini_response(question,prompt):
+    model=genai.GenerativeModel('gemini-pro')
+    response=model.generate_content([prompt[0],question])
+    return response.text
 
 with st.sidebar:   
     
     cohere_key = st.text_input("Enter Cohere API key", type="password")
     os.environ["COHERE_API_KEY"] = cohere_key
     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
+    os.environ["GOOGLE_API_KEY"] = gemini_key
+    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
     
     pinecone_key = st.text_input("Enter Pinecone API key", type="password")
     os.environ["PINECONE_API_KEY"] = pinecone_key
@@ -111,6 +119,16 @@ st.markdown("""
 
 query = st.text_input("Search!", "")
 
+## Define Your Prompt
+prompt=[
+    """
+    You are an expert in the knowledge of Artificial Intelligence, Machine Learning and Communications. Summarize your answer in no more than 200 characters.
+
+    """
+
+
+]
+
 if query != "":
     # if not cohere_key:
     #     st.info("Please enter your Cohere API key")
@@ -133,6 +151,8 @@ if query != "":
             st.write("I do not have knowledge about this topic")
         else:
             for context in xc['matches']:
+                response=get_gemini_response(query,prompt)
+                st.write(response)
                 card(
                     context['metadata']['thumbnail'],
                     context['metadata']['title'],
