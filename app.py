@@ -97,8 +97,7 @@ if query != "":
     rl = RouteLayer(encoder=encoder, routes=routes)
     Routelay = rl(query)
     if Routelay == "politics":
-        card("I don't have knowledge about this topic")
-        #print("I don't have knowledge about this topic")
+        st.write("I don't have knowledge about this topic")
     else:
         
         xq = retriever.encode([query]).tolist()
