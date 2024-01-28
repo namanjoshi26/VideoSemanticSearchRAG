@@ -23,7 +23,7 @@ load_dotenv()
 
 @st.experimental_singleton
 def init_pinecone(api):
-    pc = Pinecone(api_key="b548349d-858c-44cd-8e13-b56ad80eab3e")
+    pc = Pinecone(api_key=api)
     return pc.Index('youtube-search')
     
 @st.experimental_singleton
@@ -37,6 +37,7 @@ with st.sidebar:
     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
     
     pinecone_key = st.text_input("Enter Pinecone API key", type="password")
+    os.environ["PINECONE_API_KEY"] = pinecone_key
 
 # Check if API key is provided
 if cohere_key:
