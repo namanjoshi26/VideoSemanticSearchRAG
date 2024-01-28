@@ -82,10 +82,10 @@ query = st.text_input("Search!", "")
 
 if query != "":
     if not cohere_key:
-        st.info("Please enter your OpenAI API key")
+        st.info("Please enter your Cohere API key")
         st.stop()
     if not gemini_key:
-        st.info("Please enter your Googel Gemini API key")
+        st.info("Please enter your Google Gemini API key")
         st.stop()
     encoder = CohereEncoder()
     rl = RouteLayer(encoder=encoder, routes=routes)
