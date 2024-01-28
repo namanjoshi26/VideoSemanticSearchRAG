@@ -6,6 +6,7 @@ from semantic_router.layer import RouteLayer
 from semantic_router.encoders import CohereEncoder
 import os
 from dotenv import load_dotenv
+from getpass import getpass
 
 load_dotenv()
 os.getenv("COHERE_API_KEY")
