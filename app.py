@@ -3,10 +3,11 @@ from pinecone import Pinecone
 from sentence_transformers import SentenceTransformer
 from semantic_router import Route
 from semantic_router.layer import RouteLayer
+from semantic_router.encoders import CohereEncoder
 
 @st.experimental_singleton
-def init_pinecone():
-    pc = Pinecone(api_key="b548349d-858c-44cd-8e13-b56ad80eab3e")
+def init_pinecone(api):
+    pc = Pinecone(api_key=api)
     return pc.Index('youtube-search')
     
 @st.experimental_singleton
@@ -16,6 +17,7 @@ def init_retriever():
 with st.sidebar:    
     cohere_key = st.text_input("Enter Cohere API key", type="password")
     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
+    pinecone_key = st.text_input("Enter Pinecone API key", type="password")
 
 politics = Route(
     name="politics",
@@ -43,7 +45,7 @@ routes = [politics,chitchat]
 
     
 
-index = init_pinecone()
+index = init_pinecone(pinecone_key)
 retriever = init_retriever()
 
 def card(thubmnail, title, url, context):
