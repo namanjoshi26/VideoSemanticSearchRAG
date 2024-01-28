@@ -18,8 +18,8 @@ logging.getLogger("complete").setLevel(logging.WARNING)
 load_dotenv()
 
 
-# Assign credentials from environment variable or streamlit secrets dict
-co = cohere.Client(os.getenv("COHERE_API_KEY")) or st.secrets["COHERE_API_KEY"]
+# # Assign credentials from environment variable or streamlit secrets dict
+# co = cohere.Client(os.getenv("COHERE_API_KEY")) or st.secrets["COHERE_API_KEY"]
 
 @st.experimental_singleton
 def init_pinecone(api):
