@@ -106,7 +106,8 @@ def card(thubmnail, title, url):
 
     
 st.write("""
-# YouTube Q&A
+# RAG based Chatbot and Semantic Video Search without any Hallucinations
+## It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications
 Ask me a question!
 """)
 
