@@ -139,7 +139,7 @@ if query != "":
     rl = RouteLayer(encoder=encoder, routes=routes)
     Routelay = rl(query)
     if Routelay.name == "politics":
-        st.write("I cannot talk about politics/chitchat")
+        st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
     else:
         xq = retriever.encode([query]).tolist()
         xc = index.query(vector=xq, top_k=5, include_metadata=True)
