@@ -98,8 +98,6 @@ def card(thubmnail, title, url):
              </div>
              <div  class="col-md-8 col-sm-8">
                  <a href={url}>{title}</a>
-                 <br>
-                 
              </div>
         </div>
      </div>
