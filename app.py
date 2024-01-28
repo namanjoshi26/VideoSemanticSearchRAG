@@ -5,7 +5,13 @@ from semantic_router import Route
 from semantic_router.layer import RouteLayer
 from semantic_router.encoders import CohereEncoder
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
+os.getenv("COHERE_API_KEY")
+os.environ["COHERE_API_KEY"] = os.getenv("COHERE_API_KEY") or getpass(
+    "Enter Cohere API Key: "
+)
 @st.experimental_singleton
 def init_pinecone(api):
     pc = Pinecone(api_key="b548349d-858c-44cd-8e13-b56ad80eab3e")
@@ -16,8 +22,8 @@ def init_retriever():
     return SentenceTransformer('flax-sentence-embeddings/all_datasets_v3_mpnet-base')
 
 with st.sidebar:    
-    cohere_key = st.text_input("Enter Cohere API key", type="password")
-    os.environ["COHERE_API_KEY"] = cohere_key
+    #cohere_key = st.text_input("Enter Cohere API key", type="password")
+    #os.environ["COHERE_API_KEY"] = cohere_key
     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
     
     pinecone_key = st.text_input("Enter Pinecone API key", type="password")
@@ -84,9 +90,9 @@ st.markdown("""
 query = st.text_input("Search!", "")
 
 if query != "":
-    if not cohere_key:
-        st.info("Please enter your Cohere API key")
-        st.stop()
+    # if not cohere_key:
+    #     st.info("Please enter your Cohere API key")
+    #     st.stop()
     if not gemini_key:
         st.info("Please enter your Google Gemini API key")
         st.stop()
