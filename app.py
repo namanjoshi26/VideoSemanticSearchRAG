@@ -7,7 +7,7 @@ from semantic_router.encoders import CohereEncoder
 
 @st.experimental_singleton
 def init_pinecone(api):
-    pc = Pinecone(api_key=api)
+    pc = Pinecone(api_key="b548349d-858c-44cd-8e13-b56ad80eab3e")
     return pc.Index('youtube-search')
     
 @st.experimental_singleton
