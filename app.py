@@ -133,7 +133,17 @@ st.write("### Ask me a question!")
 st.markdown("""
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 """, unsafe_allow_html=True)
-
+st.markdown("""
+<style>
+    input[type="text"] {
+        background-color: #ffe9ec;  /* Light Pink */
+        border: 1px solid #FFB6C1;
+        color: black;  /* Adjust text color as needed */
+        padding: 8px;
+        border-radius: 5px;
+    }
+</style>
+""", unsafe_allow_html=True)
 query = st.text_input("Search!", "")
 
 # st.write("### Ask me a question!")
@@ -154,7 +164,7 @@ prompt=[
     """
 ]
 def out(response):
-    box_color = "#F0FFFF"
+    box_color = "#ffe9ec"
     colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
     st.markdown(colored_box, unsafe_allow_html=True)
 if query != "":
