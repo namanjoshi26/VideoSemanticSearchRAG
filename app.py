@@ -138,8 +138,8 @@ st.write("")  # Empty line for spacing
 
 st.write("### Ask me a question!")
 
-# Search box with placeholder
-search_query = st.text_input("", value="", placeholder="Search", type="search")
+# You can also add the search icon using Bootstrap's input group
+search_query = st.text_input("", value="", placeholder="Search", key="search_input")
 
 # You can also add the search icon using Bootstrap's input group
 search_icon = '<span class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></span>'
