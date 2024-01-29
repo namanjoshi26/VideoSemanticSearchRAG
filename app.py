@@ -187,10 +187,10 @@ def out(response,summary):
         # colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
         # st.markdown(colored_box, unsafe_allow_html=True)
     
-        colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</b></div>'
+        colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px; color:black;"><b>{response}</b></div>'
         st.markdown(colored_box, unsafe_allow_html=True)
     else:
-        colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>Summary:</b>{response}</b></div>'
+        colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;color:black;"><b>Summary:</b>{response}</b></div>'
         st.markdown(colored_box, unsafe_allow_html=True)
         
 if query != "":
