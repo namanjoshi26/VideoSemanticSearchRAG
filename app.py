@@ -118,11 +118,10 @@ def card(thumbnail, title, url, is_even):
     
 st.write("""
 # RAG based Chatbot and Semantic Video Search without any Hallucinations
-######## It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications
+####### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications
 
-
-Ask me a question!
 """)
+st.write("Ask me a question!")
 
 st.markdown("""
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
