@@ -97,13 +97,28 @@ except:
 #index = init_pinecone(pinecone_key)
 retriever = init_retriever()
 
-def card(thubmnail, title, url):
+# def card(thumbnail, title, url):
+#     return st.markdown(f"""
+#     <div class="container-fluid">
+#         <div class="row align-items-start">
+#             <div class="col-md-4 col-sm-4">
+#                  <div class="position-relative">
+#                      <a href={url}><img src={thumbnail} class="img-fluid" style="width: 192px; height: 106px"></a>
+#                  </div>
+#              </div>
+#              <div  class="col-md-8 col-sm-8">
+#                  <a href={url}>{title}</a>
+#              </div>
+#         </div>
+#      </div>
+#         """, unsafe_allow_html=True)
+def card(thumbnail, title, url):
     return st.markdown(f"""
     <div class="container-fluid">
-        <div class="row align-items-start">
+        <div class="row align-items-start mb-3"> <!-- Added margin-bottom to create space -->
             <div class="col-md-4 col-sm-4">
                  <div class="position-relative">
-                     <a href={url}><img src={thubmnail} class="img-fluid" style="width: 192px; height: 106px"></a>
+                     <a href={url}><img src={thumbnail} class="img-fluid" style="width: 192px; height: 106px"></a>
                  </div>
              </div>
              <div  class="col-md-8 col-sm-8">
