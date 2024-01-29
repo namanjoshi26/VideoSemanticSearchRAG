@@ -18,7 +18,13 @@ logging.getLogger("complete").setLevel(logging.WARNING)
 
 # Load environment variables
 load_dotenv()
-
+st.markdown("""
+<style>
+    body {
+        background-color: white;
+    }
+</style>
+""", unsafe_allow_html=True)
 
 # # Assign credentials from environment variable or streamlit secrets dict
 # co = cohere.Client(os.getenv("COHERE_API_KEY")) or st.secrets["COHERE_API_KEY"]
