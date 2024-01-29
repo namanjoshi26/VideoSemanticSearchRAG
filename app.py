@@ -170,10 +170,7 @@ prompt=[
 
     """
 ]
-def out(response):
-    # box_color = "#ffecf2"
-    # colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
-    # st.markdown(colored_box, unsafe_allow_html=True)
+def out(response,summary):
     custom_css = """
     <style>
         .streamlit-markdown-container {
@@ -185,8 +182,17 @@ def out(response):
 
     # Box styling
     box_color = "#ffecf2"
-    colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</b></div>'
-    st.markdown(colored_box, unsafe_allow_html=True)
+    if summary == False:
+        # box_color = "#ffecf2"
+        # colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
+        # st.markdown(colored_box, unsafe_allow_html=True)
+    
+        colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</b></div>'
+        st.markdown(colored_box, unsafe_allow_html=True)
+    else:
+        colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>Summary:</b>{response}</b></div>'
+        st.markdown(colored_box, unsafe_allow_html=True)
+        
 if query != "":
     with st.spinner("Processing..."):
         if not cohere_key:
@@ -203,19 +209,19 @@ if query != "":
         Routelay = rl(query)
         if Routelay.name == "politics":
             #st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
-            out("I cannot talk about politics/chitchat/hate comments/personal opinions")
+            out("I cannot talk about politics/chitchat/hate comments/personal opinions",False)
         else:
             xq = retriever.encode([query]).tolist()
             xc = index.query(vector=xq, top_k=5, include_metadata=True)
             if xc['matches'][0]['score'] < 0.5:
                 #st.write("I do not have knowledge about this topic")
-                out("I do not have knowledge about this topic")
+                out("I do not have knowledge about this topic", False)
             else:
                 
                 response=get_gemini_response(query,prompt)
-                box_color = "#F0FFFF"
-                colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>Summary:</b> {response}</div>'
-                st.markdown(colored_box, unsafe_allow_html=True)
+                #box_color = "#F0FFFF"
+                summary = True
+                out(response, summary)
                 st.write("---------------------------------------------")
                 #st.write(response)
                 is_even = True
