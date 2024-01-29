@@ -153,17 +153,10 @@ prompt=[
 
     """
 ]
-# Define the text content
-# text_content = "I do not have knowledge about this topic"
-
-# # Define the color for the box
-# box_color = "#ffcccc"  # You can choose any color code
-
-# # Create a colored box with the text content
-# colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;">{text_content}</div>'
-
-# # Display the colored box using st.markdown
-# st.markdown(colored_box, unsafe_allow_html=True)
+def out(response):
+    box_color = "#F0FFFF"
+    colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
+    st.markdown(colored_box, unsafe_allow_html=True)
 if query != "":
     with st.spinner("Processing..."):
         if not cohere_key:
@@ -179,12 +172,14 @@ if query != "":
         rl = RouteLayer(encoder=encoder, routes=routes)
         Routelay = rl(query)
         if Routelay.name == "politics":
-            st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
+            #st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
+            out("I cannot talk about politics/chitchat/hate comments/personal opinions")
         else:
             xq = retriever.encode([query]).tolist()
             xc = index.query(vector=xq, top_k=5, include_metadata=True)
             if xc['matches'][0]['score'] < 0.5:
-                st.write("I do not have knowledge about this topic")
+                #st.write("I do not have knowledge about this topic")
+                out("I do not have knowledge about this topic")
             else:
                 
                 response=get_gemini_response(query,prompt)
