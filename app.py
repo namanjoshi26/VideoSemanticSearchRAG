@@ -171,8 +171,21 @@ prompt=[
     """
 ]
 def out(response):
+    # box_color = "#ffecf2"
+    # colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
+    # st.markdown(colored_box, unsafe_allow_html=True)
+    custom_css = """
+    <style>
+        .streamlit-markdown-container {
+            color: black !important;
+        }
+    </style>
+    """
+    st.markdown(custom_css, unsafe_allow_html=True)
+
+    # Box styling
     box_color = "#ffecf2"
-    colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
+    colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</b></div>'
     st.markdown(colored_box, unsafe_allow_html=True)
 if query != "":
     with st.spinner("Processing..."):
