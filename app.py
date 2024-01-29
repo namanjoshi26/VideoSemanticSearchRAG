@@ -136,7 +136,7 @@ st.markdown("""
 st.markdown("""
 <style>
     input[type="text"] {
-        background-color: #ffe9ec;  /* Light Pink */
+        background-color: #FFC0CB;  /* Pink */
         border: 1px solid #FFB6C1;
         color: black;  /* Adjust text color as needed */
         padding: 8px;
@@ -164,7 +164,7 @@ prompt=[
     """
 ]
 def out(response):
-    box_color = "#ffe9ec"
+    box_color = "#FFC0CB"
     colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
     st.markdown(colored_box, unsafe_allow_html=True)
 if query != "":
