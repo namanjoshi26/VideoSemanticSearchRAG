@@ -177,10 +177,14 @@ if query != "":
             else:
                 response=get_gemini_response(query,prompt)
                 st.write(response)
+                is_even = True
                 for context in xc['matches']:
                     card(
                         context['metadata']['thumbnail'],
                         context['metadata']['title'],
                         context['metadata']['url'],
-                        is_even=True
-                )
+                        is_even )
+                    if is_even == True:
+                        is_even = False
+                    else:
+                        is_even = True
