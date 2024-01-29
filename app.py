@@ -127,14 +127,24 @@ st.write("###### It has knowledge(limited) about Artificial Intelligence/Machine
 # Add some space between sections
 st.write("")  # Empty line for spacing
 
-# Ask me a question section
-st.write("Ask me a question!")
+# # Ask me a question section
+# st.write("### Ask me a question!")
 
-st.markdown("""
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-""", unsafe_allow_html=True)
+# st.markdown("""
+# <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+# """, unsafe_allow_html=True)
 
-query = st.text_input("")
+# query = st.text_input("")
+
+st.write("### Ask me a question!")
+
+# Search box with placeholder
+search_query = st.text_input("", value="", placeholder="Search", type="search")
+
+# You can also add the search icon using Bootstrap's input group
+search_icon = '<span class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></span>'
+st.markdown(f'<div class="input-group">{search_query}{search_icon}</div>', unsafe_allow_html=True)
+
 
 ## Define Your Prompt
 prompt=[
