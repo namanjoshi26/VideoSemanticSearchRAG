@@ -116,11 +116,18 @@ def card(thumbnail, title, url, is_even):
         """, unsafe_allow_html=True)
 
     
+# Title section
 st.write("""
 # RAG based Chatbot and Semantic Video Search without any Hallucinations
-####### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications
-
 """)
+
+# Description section
+st.write("###### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications")
+
+# Add some space between sections
+st.write("")  # Empty line for spacing
+
+# Ask me a question section
 st.write("Ask me a question!")
 
 st.markdown("""
