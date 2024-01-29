@@ -164,7 +164,7 @@ prompt=[
     """
 ]
 def out(response):
-    box_color = "#FFC0CB"
+    box_color = "#F7CAC9"
     colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
     st.markdown(colored_box, unsafe_allow_html=True)
 if query != "":
