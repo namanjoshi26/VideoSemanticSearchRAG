@@ -97,25 +97,12 @@ except:
 #index = init_pinecone(pinecone_key)
 retriever = init_retriever()
 
-# def card(thumbnail, title, url):
-#     return st.markdown(f"""
-#     <div class="container-fluid">
-#         <div class="row align-items-start">
-#             <div class="col-md-4 col-sm-4">
-#                  <div class="position-relative">
-#                      <a href={url}><img src={thumbnail} class="img-fluid" style="width: 192px; height: 106px"></a>
-#                  </div>
-#              </div>
-#              <div  class="col-md-8 col-sm-8">
-#                  <a href={url}>{title}</a>
-#              </div>
-#         </div>
-#      </div>
-#         """, unsafe_allow_html=True)
-def card(thumbnail, title, url):
+def card(thumbnail, title, url, is_even):
+    background_color = "#f8f9fa" if is_even else "white"  # Alternating light grey and white
+
     return st.markdown(f"""
     <div class="container-fluid">
-        <div class="row align-items-start mb-3"> <!-- Added margin-bottom to create space -->
+        <div class="row align-items-start mb-3" style="background-color: {background_color};">
             <div class="col-md-4 col-sm-4">
                  <div class="position-relative">
                      <a href={url}><img src={thumbnail} class="img-fluid" style="width: 192px; height: 106px"></a>
@@ -127,6 +114,21 @@ def card(thumbnail, title, url):
         </div>
      </div>
         """, unsafe_allow_html=True)
+# def card(thumbnail, title, url):
+#     return st.markdown(f"""
+#     <div class="container-fluid">
+#         <div class="row align-items-start mb-3"> <!-- Added margin-bottom to create space -->
+#             <div class="col-md-4 col-sm-4">
+#                  <div class="position-relative">
+#                      <a href={url}><img src={thumbnail} class="img-fluid" style="width: 192px; height: 106px"></a>
+#                  </div>
+#              </div>
+#              <div  class="col-md-8 col-sm-8">
+#                  <a href={url}>{title}</a>
+#              </div>
+#         </div>
+#      </div>
+#         """, unsafe_allow_html=True)
 
     
 st.write("""
