@@ -42,7 +42,7 @@ os.environ["COHERE_API_KEY"] = cohere_key
 gemini_key = st.secrets["GOOGLE_API_KEY"]
 os.environ["GOOGLE_API_KEY"] = gemini_key
 genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-pinecone_key = st.secrets["COHERE_API_KEY"]
+pinecone_key = st.secrets["PINECONE_API_KEY"]
 os.environ["PINECONE_API_KEY"] = pinecone_key
 
 # with st.sidebar:   
