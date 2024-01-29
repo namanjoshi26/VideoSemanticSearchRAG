@@ -114,21 +114,6 @@ def card(thumbnail, title, url, is_even):
         </div>
      </div>
         """, unsafe_allow_html=True)
-# def card(thumbnail, title, url):
-#     return st.markdown(f"""
-#     <div class="container-fluid">
-#         <div class="row align-items-start mb-3"> <!-- Added margin-bottom to create space -->
-#             <div class="col-md-4 col-sm-4">
-#                  <div class="position-relative">
-#                      <a href={url}><img src={thumbnail} class="img-fluid" style="width: 192px; height: 106px"></a>
-#                  </div>
-#              </div>
-#              <div  class="col-md-8 col-sm-8">
-#                  <a href={url}>{title}</a>
-#              </div>
-#         </div>
-#      </div>
-#         """, unsafe_allow_html=True)
 
     
 st.write("""
@@ -149,10 +134,18 @@ prompt=[
     You are an expert in the knowledge of Artificial Intelligence, Machine Learning and Communications. Summarize your answer in no more than 250 characters.
 
     """
-
-
 ]
+# Define the text content
+# text_content = "I do not have knowledge about this topic"
 
+# # Define the color for the box
+# box_color = "#ffcccc"  # You can choose any color code
+
+# # Create a colored box with the text content
+# colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;">{text_content}</div>'
+
+# # Display the colored box using st.markdown
+# st.markdown(colored_box, unsafe_allow_html=True)
 if query != "":
     with st.spinner("Processing..."):
         if not cohere_key:
@@ -175,8 +168,13 @@ if query != "":
             if xc['matches'][0]['score'] < 0.5:
                 st.write("I do not have knowledge about this topic")
             else:
+                
                 response=get_gemini_response(query,prompt)
-                st.write(response)
+                box_color = "#ffcccc"
+                colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;">{response}</div>'
+                st.markdown(colored_box, unsafe_allow_html=True)
+                
+                #st.write(response)
                 is_even = True
                 for context in xc['matches']:
                     card(
