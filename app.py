@@ -170,7 +170,7 @@ if query != "":
             else:
                 
                 response=get_gemini_response(query,prompt)
-                box_color = "#ffcccc"
+                box_color = "#90EE90"
                 colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;">{response}</div>'
                 st.markdown(colored_box, unsafe_allow_html=True)
                 
