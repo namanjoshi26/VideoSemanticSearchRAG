@@ -139,11 +139,11 @@ st.write("")  # Empty line for spacing
 st.write("### Ask me a question!")
 
 # You can also add the search icon using Bootstrap's input group
-search_query = st.text_input("", value="", placeholder="Search", key="search_input")
+query = st.text_input("", value="", placeholder="Search", key="search_input")
 
 # You can also add the search icon using Bootstrap's input group
 search_icon = '<span class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></span>'
-st.markdown(f'<div class="input-group">{search_query}{search_icon}</div>', unsafe_allow_html=True)
+st.markdown(f'<div class="input-group">{query}{search_icon}</div>', unsafe_allow_html=True)
 
 
 ## Define Your Prompt
