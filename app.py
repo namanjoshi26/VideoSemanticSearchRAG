@@ -171,9 +171,9 @@ if query != "":
                 
                 response=get_gemini_response(query,prompt)
                 box_color = "#F0FFFF"
-                colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;">{response}</div>'
+                colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>Summary:</b> {response}</div>'
                 st.markdown(colored_box, unsafe_allow_html=True)
-                
+                st.write("---------------------------------------------")
                 #st.write(response)
                 is_even = True
                 for context in xc['matches']:
