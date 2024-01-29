@@ -21,7 +21,8 @@ load_dotenv()
 st.markdown("""
 <style>
     body {
-        background-color: white;
+        background-color: white !important;
+        color: black !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -108,7 +109,7 @@ def card(thumbnail, title, url, is_even):
 
     return st.markdown(f"""
     <div class="container-fluid">
-        <div class="row align-items-start mb-3" style="background-color: {background_color};">
+        <div class="row align-items-start mb-3" style="background-color: {background_color} ;">
             <div class="col-md-4 col-sm-4">
                  <div class="position-relative">
                      <a href={url}><img src={thumbnail} class="img-fluid" style="width: 192px; height: 106px"></a>
@@ -144,7 +145,7 @@ st.markdown("""
     input[type="text"] {
         background-color: #ffecf2;  /* Pink */
         border: 1px solid #FFB6C1;
-        color: black;  /* Adjust text color as needed */
+        color: black !important;  /* Adjust text color as needed */
         padding: 8px;
         border-radius: 5px;
     }
