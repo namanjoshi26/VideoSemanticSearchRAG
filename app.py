@@ -181,5 +181,6 @@ if query != "":
                     card(
                         context['metadata']['thumbnail'],
                         context['metadata']['title'],
-                        context['metadata']['url']
+                        context['metadata']['url'],
+                        is_even=True
                 )
