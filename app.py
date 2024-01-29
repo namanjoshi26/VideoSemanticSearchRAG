@@ -36,17 +36,26 @@ def get_gemini_response(question,prompt):
     model=genai.GenerativeModel('gemini-pro')
     response=model.generate_content([prompt[0],question])
     return response.text
+    
+cohere_key = st.secrets["COHERE_API_KEY"]
+os.environ["COHERE_API_KEY"] = cohere_key
+gemini_key = st.secrets["GOOGLE_API_KEY"]
+os.environ["GOOGLE_API_KEY"] = gemini_key
+genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
+pinecone_key = st.secrets["COHERE_API_KEY"]
+os.environ["PINECONE_API_KEY"] = pinecone_key
 
-with st.sidebar:   
+# with st.sidebar:   
     
-    cohere_key = st.text_input("Enter Cohere API key", type="password")
-    os.environ["COHERE_API_KEY"] = cohere_key
-    gemini_key = st.text_input("Enter Google Gemini API key", type="password")
-    os.environ["GOOGLE_API_KEY"] = gemini_key
-    genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
+#     cohere_key = st.text_input("Enter Cohere API key", type="password")
+#     os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]
+#     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
+#     os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+#     genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
     
-    pinecone_key = st.text_input("Enter Pinecone API key", type="password")
-    os.environ["PINECONE_API_KEY"] = pinecone_key
+#     pinecone_key = st.text_input("Enter Pinecone API key", type="password")
+#     pinecone_key = st.secrets["COHERE_API_KEY"]
+#     os.environ["PINECONE_API_KEY"] = pinecone_key
 
 # Check if API key is provided
 if cohere_key:
