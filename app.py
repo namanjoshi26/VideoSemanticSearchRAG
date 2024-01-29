@@ -98,7 +98,7 @@ except:
 retriever = init_retriever()
 
 def card(thumbnail, title, url, is_even):
-    background_color = "#F7CAC9" if is_even else "white"  # Alternating light grey and white
+    background_color = "#ffecf2" if is_even else "white"  # Alternating light grey and white
 
     return st.markdown(f"""
     <div class="container-fluid">
@@ -136,7 +136,7 @@ st.markdown("""
 st.markdown("""
 <style>
     input[type="text"] {
-        background-color: #F7CAC9;  /* Pink */
+        background-color: #ffecf2;  /* Pink */
         border: 1px solid #FFB6C1;
         color: black;  /* Adjust text color as needed */
         padding: 8px;
@@ -164,7 +164,7 @@ prompt=[
     """
 ]
 def out(response):
-    box_color = "#F7CAC9"
+    box_color = "#ffecf2"
     colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;"><b>{response}</div>'
     st.markdown(colored_box, unsafe_allow_html=True)
 if query != "":
