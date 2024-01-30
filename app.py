@@ -179,46 +179,48 @@ def out(response,summary):
     else:
         colored_box = f'<div style="background-color:{box_color}; padding:10px; border-radius:5px;color:black;"><b>Summary:</b>{response}</b></div>'
         st.markdown(colored_box, unsafe_allow_html=True)
-        
-if query != "":
-    with st.spinner("Processing..."):
-        if not cohere_key:
-            st.info("Please enter your Cohere API key")
-            st.stop()
-        if not gemini_key:
-            st.info("Please enter your Google Gemini API key")
-            st.stop()
-        if not pinecone_key:
-            st.info("Please enter your Pinecone API key")
-            st.stop()
-        encoder = CohereEncoder()
-        rl = RouteLayer(encoder=encoder, routes=routes)
-        Routelay = rl(query)
-        if Routelay.name == "politics":
-            #st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
-            out("I cannot talk about politics/chitchat/hate comments/personal opinions",False)
-        else:
-            xq = retriever.encode([query]).tolist()
-            xc = index.query(vector=xq, top_k=5, include_metadata=True)
-            if xc['matches'][0]['score'] < 0.5:
-                #st.write("I do not have knowledge about this topic")
-                out("I do not have knowledge about this topic", False)
+try:        
+    if query != "":
+        with st.spinner("Processing..."):
+            if not cohere_key:
+                st.info("Please enter your Cohere API key")
+                st.stop()
+            if not gemini_key:
+                st.info("Please enter your Google Gemini API key")
+                st.stop()
+            if not pinecone_key:
+                st.info("Please enter your Pinecone API key")
+                st.stop()
+            encoder = CohereEncoder()
+            rl = RouteLayer(encoder=encoder, routes=routes)
+            Routelay = rl(query)
+            if Routelay.name == "politics":
+                #st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
+                out("I cannot talk about politics/chitchat/hate comments/personal opinions",False)
             else:
-                
-                response=get_gemini_response(query,prompt)
-                #box_color = "#F0FFFF"
-                summary = True
-                out(response, summary)
-                st.write("---------------------------------------------")
-                #st.write(response)
-                is_even = True
-                for context in xc['matches']:
-                    card(
-                        context['metadata']['thumbnail'],
-                        context['metadata']['title'],
-                        context['metadata']['url'],
-                        is_even )
-                    if is_even == True:
-                        is_even = False
-                    else:
-                        is_even = True
+                xq = retriever.encode([query]).tolist()
+                xc = index.query(vector=xq, top_k=5, include_metadata=True)
+                if xc['matches'][0]['score'] < 0.5:
+                    #st.write("I do not have knowledge about this topic")
+                    out("I do not have knowledge about this topic", False)
+                else:
+                    
+                    response=get_gemini_response(query,prompt)
+                    #box_color = "#F0FFFF"
+                    summary = True
+                    out(response, summary)
+                    st.write("---------------------------------------------")
+                    #st.write(response)
+                    is_even = True
+                    for context in xc['matches']:
+                        card(
+                            context['metadata']['thumbnail'],
+                            context['metadata']['title'],
+                            context['metadata']['url'],
+                            is_even )
+                        if is_even == True:
+                            is_even = False
+                        else:
+                            is_even = True
+except:
+    st.write("Due to multiple requests on multiple devices, try again later")
