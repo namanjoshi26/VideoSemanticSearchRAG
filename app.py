@@ -116,7 +116,7 @@ def card(thumbnail, title, url, is_even):
 import streamlit as st
 st.markdown("<h1 style='text-align: center;'>Semantica Vision</h1>", unsafe_allow_html=True)
 st.write("""
-### Semantic routing based Chatbot and Semantic Video Search without any Hallucinations
+### Semantic routing based Chatbot and Video Search without any Hallucinations
 """)
 
 # Description section
