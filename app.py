@@ -118,10 +118,10 @@ st.write("""
 """)
 
 # Description section
-st.write("###### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications  /
+st.write("""###### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications  /
     Note: Multiple concurrent requests on multiple devices will lead to error. So try again later if that so /
     No. of requests per minute are limited and hence that can lead to error too. /
-    Reason: Free Trial")
+    Reason: Free Trial""")
 
 # Add some space between sections
 st.write("")  # Empty line for spacing
