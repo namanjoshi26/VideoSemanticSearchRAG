@@ -212,7 +212,7 @@ try:
                     st.write("---------------------------------------------")
                     #st.write(response)
                     is_even = True
-                    for context in xc['matches']:
+                    for context in xc['matches'][:3]:
                         card(
                             context['metadata']['thumbnail'],
                             context['metadata']['title'],
