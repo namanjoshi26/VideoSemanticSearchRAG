@@ -1,6 +1,6 @@
 # VideoSemanticSearchRAG
 
-##Semantic routing-based Chatbot and Video Search 𝐰𝐢𝐭𝐡𝐨𝐮𝐭 𝐇𝐚𝐥𝐥𝐮𝐜𝐢𝐧𝐚𝐭𝐢𝐨𝐧𝐬.
+## Semantic routing-based Chatbot and Video Search 𝐰𝐢𝐭𝐡𝐨𝐮𝐭 𝐇𝐚𝐥𝐥𝐮𝐜𝐢𝐧𝐚𝐭𝐢𝐨𝐧𝐬.
 
 🚀 𝗣𝗿𝗼𝗷𝗲𝗰𝘁 𝗢𝘃𝗲𝗿𝘃𝗶𝗲𝘄
 
