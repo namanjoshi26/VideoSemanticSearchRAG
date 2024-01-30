@@ -114,7 +114,10 @@ def card(thumbnail, title, url, is_even):
     
 # Title section
 st.write("""
-# RAG based Chatbot and Semantic Video Search without any Hallucinations
+# Semantica Vision 
+""")
+st.write("""
+### Semantic routing based Chatbot and Semantic Video Search without any Hallucinations
 """)
 
 # Description section
