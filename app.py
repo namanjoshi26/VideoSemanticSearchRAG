@@ -119,8 +119,9 @@ st.write("""
 
 # Description section
 st.write("""###### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications  
-    Note: Multiple concurrent requests on multiple devices will lead to error. So try again later if that so 
-    No. of requests per minute are limited and hence that can lead to error too. So try again later if that so 
+    Note: 
+    1) Multiple concurrent requests on multiple devices will lead to error. So try again later if that so 
+    2) No. of requests per minute are limited and hence that can lead to error too. So try again later if that so 
     Reason: Free Trial""")
 
 # Add some space between sections
