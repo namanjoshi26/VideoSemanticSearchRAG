@@ -52,17 +52,6 @@ genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
 pinecone_key = st.secrets["PINECONE_API_KEY"]
 os.environ["PINECONE_API_KEY"] = pinecone_key
 
-# with st.sidebar:   
-    
-#     cohere_key = st.text_input("Enter Cohere API key", type="password")
-#     os.environ["COHERE_API_KEY"] = st.secrets["COHERE_API_KEY"]
-#     gemini_key = st.text_input("Enter Google Gemini API key", type="password")
-#     os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
-#     genai.configure(api_key=st.secrets["GOOGLE_API_KEY"])
-    
-#     pinecone_key = st.text_input("Enter Pinecone API key", type="password")
-#     pinecone_key = st.secrets["COHERE_API_KEY"]
-#     os.environ["PINECONE_API_KEY"] = pinecone_key
 
 # Check if API key is provided
 if cohere_key:
@@ -129,7 +118,10 @@ st.write("""
 """)
 
 # Description section
-st.write("###### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications")
+st.write("###### It has knowledge(limited) about Artificial Intelligence/Machine Learning/Communications
+    Note: Multiple concurrent requests on multiple devices will lead to error. So try again later if that so
+    No. of requests per minute are limited and hence that can lead to error too. 
+    Reason: Free Trial")
 
 # Add some space between sections
 st.write("")  # Empty line for spacing
@@ -153,14 +145,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 query = st.text_input("Search!", "")
 
-# st.write("### Ask me a question!")
-
-# # You can also add the search icon using Bootstrap's input group
-# query = st.text_input("", value="", placeholder="Search", key="search_input")
-
-# # You can also add the search icon using Bootstrap's input group
-# search_icon = '<span class="input-group-append"><span class="input-group-text"><i class="fas fa-search"></i></span></span>'
-# st.markdown(f'<div class="input-group">{query}{search_icon}</div>', unsafe_allow_html=True)
 
 
 ## Define Your Prompt
