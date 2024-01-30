@@ -224,3 +224,16 @@ try:
                             is_even = True
 except:
     st.write("Due to multiple requests on multiple devices, try again later")
+# Your name
+name = "Naman Rajendra Joshi"
+
+# Copyright text
+copyright_text = f"© {name} - All Rights Reserved"
+
+# Your Streamlit app content goes here
+
+# Display copyright text at the bottom
+st.markdown(
+    f'<div style="position: fixed; bottom: 10px; left: 50%; transform: translateX(-50%);">{copyright_text}</div>',
+    unsafe_allow_html=True
+)
