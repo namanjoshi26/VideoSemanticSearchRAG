@@ -113,7 +113,9 @@ def card(thumbnail, title, url, is_even):
 
     
 # Title section
-st.write("""
+import streamlit as st
+st.markdown("<h1 style='text-align: center;'>Some title</h1>", unsafe_allow_html=True)
+st.title("""
                     # Semantica Vision 
 """)
 st.write("""
