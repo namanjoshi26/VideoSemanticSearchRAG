@@ -127,9 +127,9 @@ st.write("""###### It has knowledge(limited) about Artificial Intelligence/Machi
     Reason: Free Trial""")
 
 # Add some space between sections
-st.write("""USE CASE 1 - Out of Context Queries - Will say that it doesn't know eg. How to make a salad?
-          USE CASE 2 - In context Queries - Will summarize and suggest videos with videos starting at the exact timestamp where it is related to the query
-          USE CASE 3 - In Context but restricted topics - currently it supports - Politics, chitchat and personal opinions""")  # Empty line for spacing
+st.write("USE CASE 1 - Out of Context Queries - Will say that it doesn't know eg. How to make a salad?")
+st.write("USE CASE 2 - In context Queries - Will summarize and suggest videos with videos starting at the exact timestamp where it is related to the query")
+st.write("USE CASE 3 - In Context but restricted topics - currently it supports - Politics, chitchat and personal opinions")  # Empty line for spacing
 
 # Ask me a question section
 st.write("### Ask me a question!")
