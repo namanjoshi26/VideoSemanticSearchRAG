@@ -71,7 +71,7 @@ politics = Route(
 chitchat = Route(
     name="chitchat",
     utterances=[
-        "how's the weather today?",
+        "Where do you want to go today?",
         "how are things going?",
         "lovely weather today",
         "the weather is horrendous",
