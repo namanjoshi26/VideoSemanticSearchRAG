@@ -196,7 +196,7 @@ try:
             encoder = CohereEncoder()
             rl = RouteLayer(encoder=encoder, routes=routes)
             Routelay = rl(query)
-            if Routelay.name == "politics":
+            if Routelay.name == "politics" or Routelay.name == "chitchat":
                 #st.write("I cannot talk about politics/chitchat/hate comments/personal opinions")
                 out("I cannot talk about politics/chitchat/hate comments/personal opinions",False)
             else:
